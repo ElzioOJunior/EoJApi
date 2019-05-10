@@ -4,7 +4,7 @@ let Usuario = require('../Models/usuarioModel')
 exports.login = function (req, res) {
   Usuario.findOne({ email: req.body.email }, function (err, usuario) {
     if (err) {
-      return res.json({
+      return res.status(500).json({
         mensagem: err
       })
     }
@@ -12,7 +12,7 @@ exports.login = function (req, res) {
     if (req.body.email === usuario.email && req.body.senha === usuario.senha) {
       const email = usuario.email
       var token = jwToken.sign({ email }, process.env.SECRET, {
-        expiresIn: 300
+        expiresIn: 180
       })
 
       usuario.dataUltimoLogin = Date.now
@@ -20,7 +20,7 @@ exports.login = function (req, res) {
 
       usuario.save(function (err) {
         if (err) {
-          return res.json({
+          return res.status(500).json({
             mensagem: err
           })
         }

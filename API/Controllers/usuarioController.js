@@ -5,7 +5,7 @@ const crypto = require('crypto')
 exports.index = function (req, res) {
   Usuario.get(function (err, usuarios) {
     if (err) {
-      res.json({
+      res.status(500).json({
         mensagem: err
       })
     }
@@ -32,7 +32,7 @@ exports.salvar = function (req, res) {
 
   Usuario.findOne({ email: req.body.email }, function (err, usuario) {
     if (err) {
-      res.json({
+      res.status(500).json({
         mensagem: err
       })
     }
@@ -47,14 +47,14 @@ exports.salvar = function (req, res) {
   })
 
   var token = jwToken.sign({ email }, process.env.SECRET, {
-    expiresIn: 300
+    expiresIn: 180
   })
 
   usuario.token = token
 
   usuario.save(function (err, usuario) {
     if (err) {
-      return res.json({
+      return res.status(500).json({
         mensagem: err
       })
     }
@@ -75,7 +75,7 @@ exports.buscar = function (req, res) {
   } else {
     Usuario.findById(req.params.id, function (err, usuario) {
       if (err) {
-        return res.json({
+        return res.status(500).json({
           mensagem: err
         })
       }
