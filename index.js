@@ -23,6 +23,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
+// mongoose.connect('mongodb://localhost/localdb')
 mongoose.connect('mongodb+srv://teste:abcd.123H@cluster0-5s48k.mongodb.net/test?retryWrites=true')
 
 var port = process.env.PORT || 3000
