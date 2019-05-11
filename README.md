@@ -3,7 +3,7 @@ Api desenvolvida para participação no processo seletivo.
 
 A API tem por finalidade expor endpoints para cadastro de usuários, login e autenticação via JWT.
 
- - IDE utilzida para desenvolvimento:
+ - IDE utilizada para desenvolvimento:
         Visual Studio Code
 
  - Tecnologia Usada: 
