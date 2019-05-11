@@ -79,10 +79,15 @@ exports.buscar = function (req, res) {
           mensagem: err
         })
       }
-
-      if (token !== usuario.token) {
-        return res.status(401).json({
-          mensagem: 'Não autorizado!'
+      if (usuario != null) {
+        if (token !== usuario.token) {
+          return res.status(401).json({
+            mensagem: 'Não autorizado!'
+          })
+        }
+      } else {
+        return res.status(400).json({
+          mensagem: 'Usuário inexistente!'
         })
       }
 
