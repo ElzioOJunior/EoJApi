@@ -1,5 +1,4 @@
-# Tivia
-Api desenvolvida para participação no processo seletivo.
+
 
 A API tem por finalidade expor endpoints para cadastro de usuários, login e autenticação via JWT.
 
